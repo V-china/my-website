@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>驴驴钓鱼 - 小游戏</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="game-container">
+    <header class="game-header">
+      <h1>🐴 驴驴钓鱼</h1>
+      <div class="stats">
+        <div class="stat-item">
+          <span class="label">得分</span>
+          <span class="value" id="score">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">时间</span>
+          <span class="value" id="timer">60</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">最高分</span>
+          <span class="value" id="best-score">0</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="game-area">
+      <canvas id="gameCanvas" width="800" height="600"></canvas>
+      
+      <div id="start-screen" class="overlay">
+        <div class="overlay-content">
+          <h2>🐴 驴驴钓鱼</h2>
+          <p>帮助小驴钓到更多的鱼！</p>
+          <div class="instructions">
+            <p>🎣 <strong>操作方式：</strong></p>
+            <p>• 移动鼠标控制鱼钩位置</p>
+            <p>• 点击鼠标放下鱼钩</p>
+            <p>• 钓到不同的鱼获得不同分数</p>
+            <p>• 小心避开垃圾和炸弹！</p>
+          </div>
+          <button id="start-btn" class="game-btn">开始游戏</button>
+        </div>
+      </div>
+
+      <div id="game-over-screen" class="overlay hidden">
+        <div class="overlay-content">
+          <h2>游戏结束</h2>
+          <p class="final-score">你的得分: <strong id="final-score">0</strong></p>
+          <p class="best-score-text" id="best-score-text"></p>
+          <button id="restart-btn" class="game-btn">再玩一次</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="fish-legend">
+      <h3>鱼类图鉴</h3>
+      <div class="legend-items">
+        <div class="legend-item">🐟 小鱼 +5分</div>
+        <div class="legend-item">🐠 热带鱼 +10分</div>
+        <div class="legend-item">🐡 河豚 +15分</div>
+        <div class="legend-item">🦈 鲨鱼 +25分</div>
+        <div class="legend-item">🐙 章鱼 +20分</div>
+        <div class="legend-item">🗑️ 垃圾 -10分</div>
+        <div class="legend-item">💣 炸弹 -20分</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

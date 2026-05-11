@@ -377,10 +377,20 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
-canvas.addEventListener('mousemove', (e) => {
+function getCanvasCoords(clientX, clientY) {
   const rect = canvas.getBoundingClientRect();
-  mouseX = e.clientX - rect.left;
-  mouseY = e.clientY - rect.top;
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  return {
+    x: (clientX - rect.left) * scaleX,
+    y: (clientY - rect.top) * scaleY
+  };
+}
+
+canvas.addEventListener('mousemove', (e) => {
+  const coords = getCanvasCoords(e.clientX, e.clientY);
+  mouseX = coords.x;
+  mouseY = coords.y;
 });
 
 canvas.addEventListener('click', () => {
@@ -388,6 +398,25 @@ canvas.addEventListener('click', () => {
     hook.drop();
   }
 });
+
+canvas.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const coords = getCanvasCoords(touch.clientX, touch.clientY);
+  mouseX = coords.x;
+  mouseY = coords.y;
+  if (gameState === 'playing' && hook) {
+    hook.drop();
+  }
+}, { passive: false });
+
+canvas.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const coords = getCanvasCoords(touch.clientX, touch.clientY);
+  mouseX = coords.x;
+  mouseY = coords.y;
+}, { passive: false });
 
 startBtn.addEventListener('click', startGame);
 restartBtn.addEventListener('click', startGame);

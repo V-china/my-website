@@ -4,6 +4,14 @@
   padding: 0;
 }
 
+html, body {
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -12,6 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  touch-action: manipulation;
 }
 
 .game-container {
@@ -81,6 +90,9 @@ body {
   width: 100%;
   height: auto;
   cursor: crosshair;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .overlay {
@@ -227,22 +239,67 @@ body {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding: 8px;
+    align-items: flex-start;
+  }
+
+  .game-header {
+    padding: 12px 15px;
+    border-radius: 15px 15px 0 0;
+  }
+
   .game-header h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
   }
 
   .stats {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .stat-item {
+    padding: 8px 10px;
+  }
+
+  .stat-item .label {
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+  }
+
+  .stat-item .value {
+    font-size: 1.3rem;
+  }
+
+  .game-area {
+    border-radius: 0 0 15px 15px;
   }
 
   .overlay-content {
-    padding: 30px 20px;
-    margin: 20px;
+    padding: 25px 18px;
+    margin: 15px;
+    max-width: 90%;
   }
 
   .overlay-content h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .overlay-content p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .instructions {
+    padding: 14px;
+    margin: 15px 0;
+  }
+
+  .instructions p {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
   }
 
   .game-btn {
@@ -250,25 +307,95 @@ body {
     font-size: 1.1rem;
   }
 
+  .fish-legend {
+    padding: 15px;
+    margin-top: 12px;
+  }
+
+  .fish-legend h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
   .legend-items {
     grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .legend-item {
+    padding: 8px 10px;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
   .game-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .stat-item {
+    padding: 6px 8px;
+  }
+
+  .stat-item .label {
+    font-size: 0.65rem;
   }
 
   .stat-item .value {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 
   .overlay-content h2 {
     font-size: 1.5rem;
   }
 
-  .instructions p {
+  .overlay-content p {
     font-size: 0.9rem;
+  }
+
+  .instructions p {
+    font-size: 0.85rem;
+  }
+
+  .game-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+
+  .legend-item {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  body {
+    padding: 5px;
+    align-items: flex-start;
+  }
+
+  .game-header {
+    padding: 8px 12px;
+  }
+
+  .game-header h1 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+
+  .stat-item {
+    padding: 4px 8px;
+  }
+
+  .stat-item .value {
+    font-size: 1rem;
+  }
+
+  .fish-legend {
+    display: none;
   }
 }

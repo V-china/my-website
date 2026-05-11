@@ -108,6 +108,8 @@ body {
   align-items: center;
   z-index: 10;
   transition: opacity 0.3s ease;
+  overflow-y: auto;
+  padding: 10px;
 }
 
 .overlay.hidden {
@@ -242,6 +244,16 @@ body {
   body {
     padding: 8px;
     align-items: flex-start;
+  }
+
+  .overlay {
+    position: fixed;
+    align-items: flex-start;
+    padding: 20px 10px;
+  }
+
+  .overlay-content {
+    margin: auto;
   }
 
   .game-header {
